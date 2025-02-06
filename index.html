@@ -1,0 +1,1596 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>MotionCanvas: Cinematic Shot Design with Controllable Image-to-Video Generation</title>
+<link href="style.css" rel="stylesheet" type="text/css">
+
+<link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+      rel="stylesheet">
+      <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"> -->
+<link rel="stylesheet" href="./static/css/bulma.min.css">
+<link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+<link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+<link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+<link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+<link rel="stylesheet" href="./static/css/index.css">
+<!-- <link rel="icon" href=".../icons8-canvas-external-xnimrodx-lineal-color-xnimrodx-96.png"> -->
+<link rel="icon" href="https://img.icons8.com/external-xnimrodx-lineal-color-xnimrodx/64/external-canvas-art-and-design-studio-xnimrodx-lineal-color-xnimrodx.png">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script defer src="./static/js/fontawesome.all.min.js"></script>
+<script src="./static/js/bulma-carousel.min.js"></script>
+<script src="./static/js/bulma-slider.min.js"></script>
+<script src="./static/js/index.js"></script>
+</head>
+
+<body>
+	<button style="position: fixed;right: 15px;top:  50%;height: 100px;width: 140px; font-size: 20px;" type="button"><a href="#top">Back to top</a></button> 
+<div class="page-container">
+<section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <img src="static/logo.png" style="height:90px"></img> 
+            <h1 class="title is-1 publication-title">MotionCanvas: Cinematic Shot Design with Controllable Image-to-Video Generation</h1>
+            <!-- <div class="is-size-4 publication-authors">
+              <strong>ACM Transactions on Graphics (Special issue of SIGGRAPH Asia 2024)</strong> 
+            </div> -->
+            <!-- <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="https://doubiiu.github.io/">Jinbo Xing</a><sup>1,*</sup>,
+              </span>
+              <span class="author-block">
+                  <a href="https://mai-t-long.com/">Long Mai</a><sup>2</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://cusuh.github.io/">Cusuh Ham</a><sup>2</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://gabriel-huang.github.io/">Jiahui Huang</a><sup>2</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://anime26398.github.io/">Aniruddha Mahapatra</a><sup>2</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://www.cse.cuhk.edu.hk/~cwfu/">Chi-Wing Fu</a><sup>1</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://ttwong12.github.io/myself.html">Tien-Tsin Wong</a><sup>3</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://pages.cs.wisc.edu/~fliu/">Feng Liu</a><sup>2</sup>
+              </span>
+            </div> -->
+  
+            <!-- <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup>The Chinese University of Hong Kong,</span>&nbsp;
+              <span class="author-block"><sup>2</sup>Adobe Research,</span>&nbsp;
+              <span class="author-block"><sup>3</sup>Monash University,</span>&nbsp;
+              <span class="author-block"><sup>*</sup>Internship Project</span>
+            </div> -->
+  
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- PDF Link. -->
+                <!-- <span class="link-block">
+                  <a href=""
+                     class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>Paper</span>
+                  </a>
+                </span> -->
+                <!-- <span class="link-block">
+                  <a href="#"
+                     class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
+                  </a>
+                </span> -->
+                <!-- Code Link. -->
+                <!-- <span class="link-block">
+                  <a href=""
+                     class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code (TODO)</span>
+                    </a>
+                </span> -->
+                <!-- Dataset Link. -->
+                <!-- <span class="link-block">
+                  <a href=""
+                      class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="fab fa-youtube"></i>
+                    </span>
+                    <span>Video</span>
+                  </a>
+                </span> -->
+                <!-- <span class="link-block">
+                  <a href="https://huggingface.co/spaces/Doubiiu/tooncrafter"
+                     class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <img style="max-width: 100%;" src="static/hf.png" alt="Hugging Face Demo">
+                    </span>
+                    <span>Hugging Face Demo</span>
+                  </a>
+                </span> -->
+
+
+              </div>
+              <div class="publication-links">
+              
+                <span class="link-block">
+                  <a href="#app_cinematic_design"
+                     class="external-link button is-normal is-rounded">
+                    <span>Comparisons & showcases for cinematic shot design</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="#applications"
+                     class="external-link button is-normal is-rounded">
+                    <span>Applications</span>
+                  </a>
+                </span>              
+            
+
+
+              </div>
+                <div class="publication-links">
+                  <span class="link-block">
+                    <a href="#applications_container"
+                       class="external-link button is-normal is-rounded">
+                      <span>Additional applications</span>
+                    </a>
+                  </span>
+                <span class="link-block">
+                  <a href="#sparse_container"
+                     class="external-link button is-normal is-rounded">
+                    <span>Comparisons</span>
+                  </a>
+                </span>
+
+                <span class="link-block">
+                  <a href="#ablation_study"
+                     class="external-link button is-normal is-rounded">
+                    <span>Ablation study</span>
+                  </a>
+                </span>
+
+                <span class="link-block">
+                  <a href="#additional_analysis"
+                     class="external-link button is-normal is-rounded">
+                    <span>Additional analysis</span>
+                  </a>
+                </span>
+
+                <span class="link-block">
+                  <a href="#legend"
+                     class="external-link button is-normal is-rounded">
+                    <span>Legend</span>
+                  </a>
+                </span>        
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
+  <!-- <p align="center">&nbsp;</p> -->
+	<a href="#top"></a>
+  <!-- <ul>
+    <li><a href="#teaser">Teaser video</a></li>
+	  <li><a href="#app_cinematic_design">Comparison & showcases for cinematic shot design</a></li>
+    <li><a href="#applications">Applications</a></li>
+    <li><a href="#applications_container">Additional Applications</a></li>
+    <li><a href="#sparse_container">Comparisons with Baseline Methods</a></li>
+    <li><a href="#ablation_study">Ablation study</a></li>
+    <li><a href="#additional_analysis">Additional Analysis</a></li>
+  </ul> -->
+
+  <!------------------ BEGIN SECTION ------------------>
+  <!-- <p>&nbsp;</p> -->
+  <hr>
+  <!-- <h2 style="margin-top: 0em;" id="teaser" align="left"><a name="image-results" id="image-results"></a>Teaser video</h2>-->
+  <table  width="1024" align="center">
+    <tbody>
+      <tr>
+        <th></th>
+        <th style="font-size: 16px">Inputs</th>
+        <th style="font-size: 16px">Camera: Static</th>
+        <th style="font-size: 16px">Camera: Dolly out</th>
+        <th style="font-size: 16px">Camera: Orbit right + Pedestal up</th>
+      </tr>
+      <tr>
+        <th class="arrow-cell">
+          <div class="arrow arrow-up"></div>
+        </th>
+        <th><img class="input_image_frameinterp" src="teaser/obj1.png" alt=""/></th>
+        <th><video  width="320" src="teaser/1737446409_obj5_cam1/Ours.mp4" autoplay loop controls muted/></th>
+        <th><video  width="320" src="teaser/1737446409_obj5_cam2/Ours.mp4" autoplay loop controls muted/></th>
+        <th><video  width="320" src="teaser/1737446409_obj5_cam3/Ours.mp4" autoplay loop controls muted/></th>
+      </tr>
+      <tr>
+        <td class="vertical-text">Object Motions</td> 
+        <th><img class="input_image_frameinterp" src="teaser/obj2.png" alt=""/></th>
+        <th><video  width="320" src="teaser/1737432088_obj2_cam1/Ours.mp4" autoplay loop controls muted/></th>
+        <th><video  width="320" src="teaser/1737432088_obj2_cam2/Ours.mp4" autoplay loop controls muted/></th>
+        <th><video  width="320" src="teaser/1737432088_obj2_cam3/Ours.mp4" autoplay loop controls muted/></th>
+      </tr>
+      <tr>
+        <th class="arrow-cell">
+          <div class="arrow arrow-down"></div>
+        </th>
+        <th><img class="input_image_frameinterp" src="teaser/obj3.png" alt=""/></th>
+        <th><video  width="320" src="teaser/1737432088_obj3_cam1/Ours.mp4" autoplay loop controls muted/></th>
+        <th><video  width="320" src="teaser/1737432088_obj3_cam2/Ours.mp4" autoplay loop controls muted/></th>
+        <th><video  width="320" src="teaser/1737432088_obj3_cam3/Ours.mp4" autoplay loop controls muted/></th>
+      </tr>
+        <tr> <td><br /></td> </tr> 
+    </tbody>
+  </table>
+
+  <p>&nbsp;</p>
+  <hr>
+  <h2 style="margin-top: 0em;" id="abstract" align="center"><a name="image-results" id="image-results"></a>Abstract</h2>
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <!-- <h2 class="title is-3">Abstract</h2> -->
+          <div class="content has-text-justified">
+            <p>
+              This paper presents a method that allows users to design cinematic video shots in the context of image-to-video generation. Shot design, a critical aspect of filmmaking, involves meticulously planning both camera movements and object motions in a scene.
+              However, enabling intuitive shot design in modern image-to-video generation systems presents two main challenges: first, effectively capturing user intentions on the motion design, where both camera movements and scene-space object motions must be specified jointly; and second, representing motion information that can be effectively utilized by a video diffusion model to synthesize the image animations.
+            </p>
+            <p>
+              To address these challenges, we introduce MotionCanvas, a method that integrates user-driven controls into image-to-video (I2V) generation models, allowing users to control both object and camera motions in a scene-aware manner. 
+              By connecting insights from classical computer graphics and contemporary video generation techniques, we demonstrate the ability to achieve 3D-aware motion control in I2V synthesis without requiring costly 3D-related training data.
+              MotionCanvas enables users to intuitively depict scene-space motion intentions, and translates them into spatiotemporal motion-conditioning signals for video diffusion models.
+              We demonstrate the effectiveness of our method on a wide range of real-world image content and shot-design scenarios, highlighting its potential to enhance the creative workflows in digital content creation and adapt to various image and video editing applications.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!--/ Abstract. -->
+
+
+
+  <!------------------ BEGIN SECTION ------------------>
+  <p>&nbsp;</p>
+  <hr>
+  <h2 style="margin-top: 0em;" id="app_cinematic_design" align="left"><a name="image-results" id="image-results"></a>Comparison & Showcases</h2>
+  
+  <p align="left">
+    Effectiveness in Cinematic Shot Design (Joint camera and object motion control in a 3D-scene-aware manner).
+  </p>
+  <table  width="1024" align="center">
+    <tbody>
+      <tr>
+        <th style="font-size: 16px">Camera motion</th>
+        <th style="font-size: 16px">Object global motion</th>
+        <th style="font-size: 16px">Object local motion</th>
+      </tr>
+      <tr>
+        <th>
+          <div class="centered-symbol">
+            [ Pedestal up + Dolly in ]
+          </div>
+        </th>
+        <th><img class="input_image_frameinterp" src="./03comparison/01_shot_design/1737320888/global.png" alt=""/></th>
+        <th><img class="input_image_frameinterp" src="./03comparison/01_shot_design/1737320888/local.png" alt=""/></th>
+      </tr>
+      <tr>
+        <th style="font-size: 16px">DragAnything</th>
+        <th style="font-size: 16px">MOFA-Video</th>
+        <th style="font-size: 16px"><b>MotionCanvas (Ours)</b></th>
+      </tr>
+      <tr>
+        <th><video  class="video-player-showcase-compare" src="./03comparison/01_shot_design/1737320888/DragAnything.mp4" autoplay loop controls muted/></th>
+        <th><video  class="video-player-showcase-compare" src="./03comparison/01_shot_design/1737320888/MOFAVideo.mp4" autoplay loop controls muted/></th>
+        <th><video  class="video-player-showcase-compare" src="./03comparison/01_shot_design/1737320888/Ours_28f_16fps.mp4" autoplay loop controls muted/></th>
+      </tr>
+        <tr> <td><br /></td> </tr> 
+    </tbody>
+  </table>
+  <hr class="divider" />
+  <table  width="1024" align="center">
+    <tbody>
+      <tr>
+        <th style="font-size: 16px">Camera motion</th>
+        <th style="font-size: 16px">Object global motion</th>
+        <th style="font-size: 16px">Object local motion</th>
+      </tr>
+      <tr>
+        <th>
+          <div class="centered-symbol">
+            [ Static ]
+          </div>
+        </th>
+        <th><img class="input_image_frameinterp" src="./03comparison/01_shot_design/1737337164/global.png" alt=""/></th>
+        <th><img class="input_image_frameinterp" src="./03comparison/01_shot_design/1737337164/local.png" alt=""/></th>
+      </tr>
+      <tr>
+        <th style="font-size: 16px">DragAnything</th>
+        <th style="font-size: 16px">MOFA-Video</th>
+        <th style="font-size: 16px"><b>MotionCanvas (Ours)</b></th>
+      </tr>
+      <tr>
+        <th><video  class="video-player-showcase-compare" src="./03comparison/01_shot_design/1737337164/DragAnything.mp4" autoplay loop controls muted/></th>
+        <th><video  class="video-player-showcase-compare" src="./03comparison/01_shot_design/1737337164/MOFAVideo.mp4" autoplay loop controls muted/></th>
+        <th><video  class="video-player-showcase-compare" src="./03comparison/01_shot_design/1737337164/Ours_28f_16fps.mp4" autoplay loop controls muted/></th>
+      </tr>
+        <tr> <td><br /></td> </tr> 
+    </tbody>
+  </table>
+  <hr class="divider" />
+  <table  width="1024" align="center">
+    <tbody>
+      <tr>
+        <th style="font-size: 16px">Camera motion</th>
+        <th style="font-size: 16px">Object global motion</th>
+        <th style="font-size: 16px">Object local motion</th>
+      </tr>
+      <tr>
+        <th>
+          <div class="centered-symbol">
+            [ Roll clockwise ]
+          </div>
+        </th>
+        <th><img class="input_image_frameinterp" src="./03comparison/01_shot_design/1737338711/global.png" alt=""/></th>
+        <th><img class="input_image_frameinterp" src="./03comparison/01_shot_design/1737338711/local.png" alt=""/></th>
+      </tr>
+      <tr>
+        <th style="font-size: 16px">DragAnything</th>
+        <th style="font-size: 16px">MOFA-Video</th>
+        <th style="font-size: 16px"><b>MotionCanvas (Ours)</b></th>
+      </tr>
+      <tr>
+        <th><video  class="video-player-showcase-compare" src="./03comparison/01_shot_design/1737338711/DragAnything.mp4" autoplay loop controls muted/></th>
+        <th><video  class="video-player-showcase-compare" src="./03comparison/01_shot_design/1737338711/MOFAVideo.mp4" autoplay loop controls muted/></th>
+        <th><video  class="video-player-showcase-compare" src="./03comparison/01_shot_design/1737338711/Ours_28f_16fps.mp4" autoplay loop controls muted/></th>
+      </tr>
+        <tr> <td><br /></td> </tr> 
+    </tbody>
+  </table>
+  <hr class="divider" />
+
+  <table  width="1024" align="center">
+    <tbody>
+      <tr>
+        <th style="font-size: 16px">Camera motion</th>
+        <th style="font-size: 16px">Object global motion</th>
+        <th style="font-size: 16px">Object local motion</th>
+      </tr>
+      <tr>
+        <th>
+          <div class="centered-symbol">
+            [ Tilting up ]
+          </div>
+        </th>
+        <th><img class="input_image_frameinterp" src="./03comparison/01_shot_design/1737323373/global.png" alt=""/></th>
+        <th>
+          <div class="centered-symbol">
+            <span class="symbol">⌀</span>
+          </div>
+        </th>
+      </tr>
+      <tr>
+        <th style="font-size: 16px">DragAnything</th>
+        <th style="font-size: 16px">MOFA-Video</th>
+        <th style="font-size: 16px"><b>MotionCanvas (Ours)</b></th>
+      </tr>
+      <tr>
+        <th><video  class="video-player-showcase-compare" src="./03comparison/01_shot_design/1737323373/DragAnything.mp4" autoplay loop controls muted/></th>
+        <th><video  class="video-player-showcase-compare" src="./03comparison/01_shot_design/1737323373/MOFAVideo.mp4" autoplay loop controls muted/></th>
+        <th><video  class="video-player-showcase-compare" src="./03comparison/01_shot_design/1737323373/Ours_28f_16fps.mp4" autoplay loop controls muted/></th>
+      </tr>
+        <tr> <td><br /></td> </tr> 
+    </tbody>
+  </table>
+  <hr class="divider" />
+  <table  width="1024" align="center">
+    <tbody>
+      <tr>
+        <th style="font-size: 16px">Camera motion</th>
+        <th style="font-size: 16px">Object global motion</th>
+        <th style="font-size: 16px">Object local motion</th>
+      </tr>
+      <tr>
+        <th>
+          <div class="centered-symbol">
+            [ Dolly in ]
+          </div>
+        </th>
+        <th><img class="input_image_frameinterp" src="./03comparison/01_shot_design/1737323670/global.png" alt=""/></th>
+        <th>
+          <div class="centered-symbol">
+            <span class="symbol">⌀</span>
+          </div>
+        </th>
+      </tr>
+      <tr>
+        <th style="font-size: 16px">DragAnything</th>
+        <th style="font-size: 16px">MOFA-Video</th>
+        <th style="font-size: 16px"><b>MotionCanvas (Ours)</b></th>
+      </tr>
+      <tr>
+        <th><video  class="video-player-showcase-compare" src="./03comparison/01_shot_design/1737323670/DragAnything.mp4" autoplay loop controls muted/></th>
+        <th><video  class="video-player-showcase-compare" src="./03comparison/01_shot_design/1737323670/MOFAVideo.mp4" autoplay loop controls muted/></th>
+        <th><video  class="video-player-showcase-compare" src="./03comparison/01_shot_design/1737323670/Ours_28f_16fps.mp4" autoplay loop controls muted/></th>
+      </tr>
+        <tr> <td><br /></td> </tr> 
+    </tbody>
+  </table>
+  <hr class="divider" />
+  <table  width="1024" align="center">
+    <tbody>
+      <tr>
+        <th style="font-size: 16px">Camera motion</th>
+        <th style="font-size: 16px">Object global motion</th>
+        <th style="font-size: 16px">Object local motion</th>
+      </tr>
+      <tr>
+        <th>
+          <div class="centered-symbol">
+            [ Trucking right + Pedestal up ]
+          </div>
+        </th>
+        <th><img class="input_image_frameinterp" src="./03comparison/01_shot_design/1737324417/global.png" alt=""/></th>
+        <th>
+          <div class="centered-symbol">
+            <span class="symbol">⌀</span>
+          </div>
+        </th>
+      </tr>
+      <tr>
+        <th style="font-size: 16px">DragAnything</th>
+        <th style="font-size: 16px">MOFA-Video</th>
+        <th style="font-size: 16px"><b>MotionCanvas (Ours)</b></th>
+      </tr>
+      <tr>
+        <th><video  class="video-player-showcase-compare" src="./03comparison/01_shot_design/1737324417/DragAnything.mp4" autoplay loop controls muted/></th>
+        <th><video  class="video-player-showcase-compare" src="./03comparison/01_shot_design/1737324417/MOFAVideo.mp4" autoplay loop controls muted/></th>
+        <th><video  class="video-player-showcase-compare" src="./03comparison/01_shot_design/1737324417/Ours_28f_16fps.mp4" autoplay loop controls muted/></th>
+      </tr>
+        <tr> <td><br /></td> </tr> 
+    </tbody>
+  </table>
+  <hr class="divider" />
+
+  <table  width="1024" align="center">
+    <tbody>
+      <tr>
+        <th style="font-size: 16px">Camera motion</th>
+        <th style="font-size: 16px">Object global motion</th>
+        <th style="font-size: 16px">Object local motion</th>
+      </tr>
+      <tr>
+        <th>
+          <div class="centered-symbol">
+            [ Orbit right ]
+          </div>
+        </th>
+        <th>
+          <div class="centered-symbol">
+            <span class="symbol">⌀</span>
+          </div>
+        </th>
+        <th><img class="input_image_frameinterp" src="./03comparison/01_shot_design/1737326441/local.png" alt=""/></th>
+      </tr>
+      <tr>
+        <th style="font-size: 16px">DragAnything</th>
+        <th style="font-size: 16px">MOFA-Video</th>
+        <th style="font-size: 16px"><b>MotionCanvas (Ours)</b></th>
+      </tr>
+      <tr>
+        <th><video  class="video-player-showcase-compare" src="./03comparison/01_shot_design/1737326441/DragAnything.mp4" autoplay loop controls muted/></th>
+        <th><video  class="video-player-showcase-compare" src="./03comparison/01_shot_design/1737326441/MOFAVideo.mp4" autoplay loop controls muted/></th>
+        <th><video  class="video-player-showcase-compare" src="./03comparison/01_shot_design/1737326441/Ours_28f_16fps.mp4" autoplay loop controls muted/></th>
+      </tr>
+        <tr> <td><br /></td> </tr> 
+    </tbody>
+  </table>
+  <hr class="divider" />
+
+  <table  width="1024" align="center">
+    <tbody>
+      <tr>
+        <th style="font-size: 16px">Camera motion</th>
+        <th style="font-size: 16px">Object global motion</th>
+        <th style="font-size: 16px">Object local motion</th>
+      </tr>
+      <tr>
+        <th>
+          <div class="centered-symbol">
+            [ Panning left + Tilting up ]
+          </div>
+        </th>
+        <th><img class="input_image_frameinterp" src="./03comparison/01_shot_design/1737327526/global.png" alt=""/></th>
+        <th>
+          <div class="centered-symbol">
+            <span class="symbol">⌀</span>
+          </div>
+        </th>
+      </tr>
+      <tr>
+        <th style="font-size: 16px">DragAnything</th>
+        <th style="font-size: 16px">MOFA-Video</th>
+        <th style="font-size: 16px"><b>MotionCanvas (Ours)</b></th>
+      </tr>
+      <tr>
+        <th><video  class="video-player-showcase-compare" src="./03comparison/01_shot_design/1737327526/DragAnything.mp4" autoplay loop controls muted/></th>
+        <th><video  class="video-player-showcase-compare" src="./03comparison/01_shot_design/1737327526/MOFAVideo.mp4" autoplay loop controls muted/></th>
+        <th><video  class="video-player-showcase-compare" src="./03comparison/01_shot_design/1737327526/Ours_28f_16fps.mp4" autoplay loop controls muted/></th>
+      </tr>
+        <tr> <td><br /></td> </tr> 
+    </tbody>
+  </table>
+  <hr class="divider" />
+  <table  width="1024" align="center">
+    <tbody>
+      <tr>
+        <th style="font-size: 16px">Camera motion</th>
+        <th style="font-size: 16px">Object global motion</th>
+        <th style="font-size: 16px">Object local motion</th>
+      </tr>
+      <tr>
+        <th>
+          <div class="centered-symbol">
+            [ Dolly in ]
+          </div>
+        </th>
+        <th><img class="input_image_frameinterp" src="./03comparison/01_shot_design/1737328372/global.png" alt=""/></th>
+        <th>
+          <div class="centered-symbol">
+            <span class="symbol">⌀</span>
+          </div>
+        </th>
+      </tr>
+      <tr>
+        <th style="font-size: 16px">DragAnything</th>
+        <th style="font-size: 16px">MOFA-Video</th>
+        <th style="font-size: 16px"><b>MotionCanvas (Ours)</b></th>
+      </tr>
+      <tr>
+        <th><video  class="video-player-showcase-compare" src="./03comparison/01_shot_design/1737328372/DragAnything.mp4" autoplay loop controls muted/></th>
+        <th><video  class="video-player-showcase-compare" src="./03comparison/01_shot_design/1737328372/MOFAVideo.mp4" autoplay loop controls muted/></th>
+        <th><video  class="video-player-showcase-compare" src="./03comparison/01_shot_design/1737328372/Ours_28f_16fps.mp4" autoplay loop controls muted/></th>
+      </tr>
+        <tr> <td><br /></td> </tr> 
+    </tbody>
+  </table>
+  <hr class="divider" />
+  <table  width="1024" align="center">
+    <tbody>
+      <tr>
+        <th style="font-size: 16px">Camera motion</th>
+        <th style="font-size: 16px">Object global motion</th>
+        <th style="font-size: 16px">Object local motion</th>
+      </tr>
+      <tr>
+        <th>
+          <div class="centered-symbol">
+            [ Pedestal down + Tiliting up ]
+          </div>
+        </th>
+        <th><img class="input_image_frameinterp" src="./03comparison/01_shot_design/1737330538/global.png" alt=""/></th>
+        <th>
+          <div class="centered-symbol">
+            <span class="symbol">⌀</span>
+          </div>
+        </th>
+      </tr>
+      <tr>
+        <th style="font-size: 16px">DragAnything</th>
+        <th style="font-size: 16px">MOFA-Video</th>
+        <th style="font-size: 16px"><b>MotionCanvas (Ours)</b></th>
+      </tr>
+      <tr>
+        <th><video  class="video-player-showcase-compare" src="./03comparison/01_shot_design/1737330538/DragAnything.mp4" autoplay loop controls muted/></th>
+        <th><video  class="video-player-showcase-compare" src="./03comparison/01_shot_design/1737330538/MOFAVideo.mp4" autoplay loop controls muted/></th>
+        <th><video  class="video-player-showcase-compare" src="./03comparison/01_shot_design/1737330538/Ours_28f_16fps.mp4" autoplay loop controls muted/></th>
+      </tr>
+        <tr> <td><br /></td> </tr> 
+    </tbody>
+  </table>
+  <hr class="divider" />
+  <table  width="1024" align="center">
+    <tbody>
+      <tr>
+        <th style="font-size: 16px">Camera motion</th>
+        <th style="font-size: 16px">Object global motion</th>
+        <th style="font-size: 16px">Object local motion</th>
+      </tr>
+      <tr>
+        <th>
+          <div class="centered-symbol">
+            [ Panning left + Dolly in ]
+          </div>
+        </th>
+        <th>
+          <div class="centered-symbol">
+            <span class="symbol">⌀</span>
+          </div>
+        </th>
+        <th>
+          <div class="centered-symbol">
+            <span class="symbol">⌀</span>
+          </div>
+        </th>
+      </tr>
+      <tr>
+        <th style="font-size: 16px">DragAnything</th>
+        <th style="font-size: 16px">MOFA-Video</th>
+        <th style="font-size: 16px"><b>MotionCanvas (Ours)</b></th>
+      </tr>
+      <tr>
+        <th><video  class="video-player-showcase-compare" src="./03comparison/01_shot_design/1737336050/DragAnything.mp4" autoplay loop controls muted/></th>
+        <th><video  class="video-player-showcase-compare" src="./03comparison/01_shot_design/1737336050/MOFAVideo.mp4" autoplay loop controls muted/></th>
+        <th><video  class="video-player-showcase-compare" src="./03comparison/01_shot_design/1737336050/Ours_28f_16fps.mp4" autoplay loop controls muted/></th>
+      </tr>
+        <tr> <td><br /></td> </tr> 
+    </tbody>
+  </table>
+  <hr class="divider" />
+
+
+
+  <table  width="1024" align="center">
+    <tbody>
+      <tr>
+        <th style="font-size: 16px">Camera motion</th>
+        <th style="font-size: 16px">Object global motion</th>
+        <th style="font-size: 16px">Object local motion</th>
+      </tr>
+      <tr>
+        <th>
+          <div class="centered-symbol">
+            [ Panning left ]
+          </div>
+        </th>
+        <th><img class="input_image_frameinterp" src="./03comparison/01_shot_design/1737339967/global.png" alt=""/></th>
+        <th>
+          <div class="centered-symbol">
+            <span class="symbol">⌀</span>
+          </div>
+        </th>
+      </tr>
+      <tr>
+        <th style="font-size: 16px">DragAnything</th>
+        <th style="font-size: 16px">MOFA-Video</th>
+        <th style="font-size: 16px"><b>MotionCanvas (Ours)</b></th>
+      </tr>
+      <tr>
+        <th><video  class="video-player-showcase-compare" src="./03comparison/01_shot_design/1737339967/DragAnything.mp4" autoplay loop controls muted/></th>
+        <th><video  class="video-player-showcase-compare" src="./03comparison/01_shot_design/1737339967/MOFAVideo.mp4" autoplay loop controls muted/></th>
+        <th><video  class="video-player-showcase-compare" src="./03comparison/01_shot_design/1737339967/Ours_28f_16fps.mp4" autoplay loop controls muted/></th>
+      </tr>
+        <tr> <td><br /></td> </tr> 
+    </tbody>
+  </table>
+  <hr class="divider" />
+
+  <table  width="1024" align="center">
+    <tbody>
+      <tr>
+        <th style="font-size: 16px">Camera motion</th>
+        <th style="font-size: 16px">Object global motion</th>
+        <th style="font-size: 16px">Object local motion</th>
+      </tr>
+      <tr>
+        <th>
+          <div class="centered-symbol">
+            [ Trucking right ]
+          </div>
+        </th>
+        <th><img class="input_image_frameinterp" src="./03comparison/01_shot_design/1737341790/global.png" alt=""/></th>
+        <th>
+          <div class="centered-symbol">
+            <span class="symbol">⌀</span>
+          </div>
+        </th>
+      </tr>
+      <tr>
+        <th style="font-size: 16px">DragAnything</th>
+        <th style="font-size: 16px">MOFA-Video</th>
+        <th style="font-size: 16px"><b>MotionCanvas (Ours)</b></th>
+      </tr>
+      <tr>
+        <th><video  class="video-player-showcase-compare" src="./03comparison/01_shot_design/1737341790/DragAnything.mp4" autoplay loop controls muted/></th>
+        <th><video  class="video-player-showcase-compare" src="./03comparison/01_shot_design/1737341790/MOFAVideo.mp4" autoplay loop controls muted/></th>
+        <th><video  class="video-player-showcase-compare" src="./03comparison/01_shot_design/1737341790/Ours_28f_16fps.mp4" autoplay loop controls muted/></th>
+      </tr>
+        <tr> <td><br /></td> </tr> 
+    </tbody>
+  </table>
+  <hr class="divider" />
+  <table  width="1024" align="center">
+    <tbody>
+      <tr>
+        <th style="font-size: 16px">Camera motion</th>
+        <th style="font-size: 16px">Object global motion</th>
+        <th style="font-size: 16px">Object local motion</th>
+      </tr>
+      <tr>
+        <th>
+          <div class="centered-symbol">
+            [ Static ]
+          </div>
+        </th>
+        <th><img class="input_image_frameinterp" src="./03comparison/01_shot_design/1737342202/global.png" alt=""/></th>
+        <th>
+          <div class="centered-symbol">
+            <span class="symbol">⌀</span>
+          </div>
+        </th>
+      </tr>
+      <tr>
+        <th style="font-size: 16px">DragAnything</th>
+        <th style="font-size: 16px">MOFA-Video</th>
+        <th style="font-size: 16px"><b>MotionCanvas (Ours)</b></th>
+      </tr>
+      <tr>
+        <th><video  class="video-player-showcase-compare" src="./03comparison/01_shot_design/1737342202/DragAnything.mp4" autoplay loop controls muted/></th>
+        <th><video  class="video-player-showcase-compare" src="./03comparison/01_shot_design/1737342202/MOFAVideo.mp4" autoplay loop controls muted/></th>
+        <th><video  class="video-player-showcase-compare" src="./03comparison/01_shot_design/1737342202/Ours_28f_16fps.mp4" autoplay loop controls muted/></th>
+      </tr>
+        <tr> <td><br /></td> </tr> 
+    </tbody>
+  </table>
+  <hr class="divider" />
+  <table  width="1024" align="center">
+    <tbody>
+      <tr>
+        <th style="font-size: 16px">Camera motion</th>
+        <th style="font-size: 16px">Object global motion</th>
+        <th style="font-size: 16px">Object local motion</th>
+      </tr>
+      <tr>
+        <th>
+          <div class="centered-symbol">
+            [ Trucking left + Dolly out ]
+          </div>
+        </th>
+        <th><img class="input_image_frameinterp" src="./03comparison/01_shot_design/1737342615/global.png" alt=""/></th>
+        <th>
+          <div class="centered-symbol">
+            <span class="symbol">⌀</span>
+          </div>
+        </th>
+      </tr>
+      <tr>
+        <th style="font-size: 16px">DragAnything</th>
+        <th style="font-size: 16px">MOFA-Video</th>
+        <th style="font-size: 16px"><b>MotionCanvas (Ours)</b></th>
+      </tr>
+      <tr>
+        <th><video  class="video-player-showcase-compare" src="./03comparison/01_shot_design/1737342615/DragAnything.mp4" autoplay loop controls muted/></th>
+        <th><video  class="video-player-showcase-compare" src="./03comparison/01_shot_design/1737342615/MOFAVideo.mp4" autoplay loop controls muted/></th>
+        <th><video  class="video-player-showcase-compare" src="./03comparison/01_shot_design/1737342615/Ours_28f_16fps.mp4" autoplay loop controls muted/></th>
+      </tr>
+        <tr> <td><br /></td> </tr> 
+    </tbody>
+  </table>
+  <hr class="divider" />
+  <table  width="1024" align="center">
+    <tbody>
+      <tr>
+        <th style="font-size: 16px">Camera motion</th>
+        <th style="font-size: 16px">Object global motion</th>
+        <th style="font-size: 16px">Object local motion</th>
+      </tr>
+      <tr>
+        <th>
+          <div class="centered-symbol">
+            [ Panning left + Pedestal up + Orbit right ]
+          </div>
+        </th>
+        <th>
+          <div class="centered-symbol">
+            <span class="symbol">⌀</span>
+          </div>
+        </th>
+        <th>
+          <div class="centered-symbol">
+            <span class="symbol">⌀</span>
+          </div>
+        </th>
+      </tr>
+      <tr>
+        <th style="font-size: 16px">DragAnything</th>
+        <th style="font-size: 16px">MOFA-Video</th>
+        <th style="font-size: 16px"><b>MotionCanvas (Ours)</b></th>
+      </tr>
+      <tr>
+        <th><video  class="video-player-showcase-compare" src="./03comparison/01_shot_design/1737343375/DragAnything.mp4" autoplay loop controls muted/></th>
+        <th><video  class="video-player-showcase-compare" src="./03comparison/01_shot_design/1737343375/MOFAVideo.mp4" autoplay loop controls muted/></th>
+        <th><video  class="video-player-showcase-compare" src="./03comparison/01_shot_design/1737343375/Ours_28f_16fps.mp4" autoplay loop controls muted/></th>
+      </tr>
+        <tr> <td><br /></td> </tr> 
+    </tbody>
+  </table>
+
+
+
+  <!------------------ BEGIN SECTION ------------------>
+  <p>&nbsp;</p>
+  <hr>
+  <h2 style="margin-top: 0em;" id="applications" align="left"><a name="image-results" id="image-results"></a>Applications</h2>
+  <p align="left">
+    Shot Design with Joint Camera and Object Control.
+  </p>
+  
+  <table  width="1024" align="center">
+    <tbody>
+      <tr>
+        <th style="font-size: 16px">Inputs</th>
+        <th style="font-size: 16px">Camera: Trucking right</th>
+        <th style="font-size: 16px">Camera: Zoom in</th>
+        <th style="font-size: 16px">Camera: Roll clockwise</th>
+      </tr>
+      <tr>
+        <th><img class="input_image_frameinterp" src="01application/01_shot_design/Vid_Frame_13_BboxTest_2.png" alt=""/></th>
+        <th><video  width="320" src="01application/01_shot_design/Vid_Frame_13_BboxTest_2__1__01.mp4" autoplay loop controls muted/></th>
+        <th><video  width="320" src="01application/01_shot_design/Vid_Frame_13_BboxTest_2__1__05.mp4" autoplay loop controls muted/></th>
+        <th><video  width="320" src="01application/01_shot_design/Vid_Frame_13_BboxTest_2__1__08.mp4" autoplay loop controls muted/></th>
+      </tr>
+      <tr>
+        <th><img class="input_image_frameinterp" src="01application/01_shot_design/Vid_Frame_13_BboxTest_3.png" alt=""/></th>
+        <th><video  width="320" src="01application/01_shot_design/Vid_Frame_13_BboxTest_3__1__01.mp4" autoplay loop controls muted/></th>
+        <th><video  width="320" src="01application/01_shot_design/Vid_Frame_13_BboxTest_3__1__05.mp4" autoplay loop controls muted/></th>
+        <th><video  width="320" src="01application/01_shot_design/Vid_Frame_13_BboxTest_3__1__08.mp4" autoplay loop controls muted/></th>
+      </tr>
+      <tr>
+        <th><img class="input_image_frameinterp" src="01application/01_shot_design/Vid_Frame_13_BboxTest_6.png" alt=""/></th>
+        <th><video  width="320" src="01application/01_shot_design/Vid_Frame_13_BboxTest_6__1__01.mp4" autoplay loop controls muted/></th>
+        <th><video  width="320" src="01application/01_shot_design/Vid_Frame_13_BboxTest_6__1__05.mp4" autoplay loop controls muted/></th>
+        <th><video  width="320" src="01application/01_shot_design/Vid_Frame_13_BboxTest_6__1__08.mp4" autoplay loop controls muted/></th>
+      </tr>
+      <tr>
+        <th style="font-size: 16px">Inputs</th>
+        <th style="font-size: 16px">Camera: Static</th>
+        <th style="font-size: 16px">Camera: Dolly in</th>
+        <th style="font-size: 16px">Camera: Diagonal bottom-right</th>
+      </tr>
+      <tr>
+        <th><img class="input_image_frameinterp" src="01application/01_shot_design/_442275541_BboxTest_2.png" alt=""/></th>
+        <th><video  width="320" src="01application/01_shot_design/_442275541_BboxTest_2__1__00.mp4" autoplay loop controls muted/></th>
+        <th><video  width="320" src="01application/01_shot_design/_442275541_BboxTest_2__1__06.mp4" autoplay loop controls muted/></th>
+        <th><video  width="320" src="01application/01_shot_design/_442275541_BboxTest_2__1__18.mp4" autoplay loop controls muted/></th>
+      </tr>
+      <tr>
+        <th><img class="input_image_frameinterp" src="01application/01_shot_design/_442275541_BboxTest_3.png" alt=""/></th>
+        <th><video  width="320" src="01application/01_shot_design/_442275541_BboxTest_3__1__00.mp4" autoplay loop controls muted/></th>
+        <th><video  width="320" src="01application/01_shot_design/_442275541_BboxTest_3__1__06.mp4" autoplay loop controls muted/></th>
+        <th><video  width="320" src="01application/01_shot_design/_442275541_BboxTest_3__1__18.mp4" autoplay loop controls muted/></th>
+      </tr>
+      <tr>
+        <th><img class="input_image_frameinterp" src="01application/01_shot_design/_442275541_BboxTest_6.png" alt=""/></th>
+        <th><video  width="320" src="01application/01_shot_design/_442275541_BboxTest_6__1__00.mp4" autoplay loop controls muted/></th>
+        <th><video  width="320" src="01application/01_shot_design/_442275541_BboxTest_6__1__06.mp4" autoplay loop controls muted/></th>
+        <th><video  width="320" src="01application/01_shot_design/_442275541_BboxTest_6__1__18.mp4" autoplay loop controls muted/></th>
+      </tr>
+    </tbody>
+  </table>
+
+  <table  width="1024" align="center">
+    <tbody>
+      <tr>
+        <th style="font-size: 16px">Camera: Dolly out</th>
+        <th style="font-size: 16px">Camera: Orbit left</th>
+        <th style="font-size: 16px">Camera: Pedestal up</th>
+      </tr>
+      <tr>
+        <th><video  width="320" src="01application/01_shot_design/Additional/example_1/cam_1_obj_1.mp4" autoplay loop controls muted/></th>
+        <th><video  width="320" src="01application/01_shot_design/Additional/example_1/cam_2_obj_1.mp4" autoplay loop controls muted/></th>
+        <th><video  width="320" src="01application/01_shot_design/Additional/example_1/cam_3_obj_1.mp4" autoplay loop controls muted/></th>
+      </tr>
+      <tr>
+        <th><video  width="320" src="01application/01_shot_design/Additional/example_1/cam_1_obj_2.mp4" autoplay loop controls muted/></th>
+        <th><video  width="320" src="01application/01_shot_design/Additional/example_1/cam_2_obj_2.mp4" autoplay loop controls muted/></th>
+        <th><video  width="320" src="01application/01_shot_design/Additional/example_1/cam_3_obj_2.mp4" autoplay loop controls muted/></th>
+      </tr>
+    </tbody>
+  </table>
+
+  <table  width="1024" align="center">
+    <tbody>
+      <tr>
+        <th style="font-size: 16px">Camera: Orbit left</th>
+        <th style="font-size: 16px">Camera: [Trcuking left + Pedestal up]</th>
+        <th style="font-size: 16px">Camera: Dolly in</th>
+      </tr>
+      <tr>
+        <th><video  width="320" src="01application/01_shot_design/Additional/example_3/cam_1_obj_1.mp4" autoplay loop controls muted/></th>
+        <th><video  width="320" src="01application/01_shot_design/Additional/example_3/cam_2_obj_1.mp4" autoplay loop controls muted/></th>
+        <th><video  width="320" src="01application/01_shot_design/Additional/example_3/cam_3_obj_1.mp4" autoplay loop controls muted/></th>
+      </tr>
+      <tr>
+        <th><video  width="320" src="01application/01_shot_design/Additional/example_3/cam_1_obj_2.mp4" autoplay loop controls muted/></th>
+        <th><video  width="320" src="01application/01_shot_design/Additional/example_3/cam_2_obj_2.mp4" autoplay loop controls muted/></th>
+        <th><video  width="320" src="01application/01_shot_design/Additional/example_3/cam_3_obj_2.mp4" autoplay loop controls muted/></th>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <table  width="1024" align="center">
+    <tbody>
+      <tr>
+        <th style="font-size: 16px">Camera: Dolly out</th>
+        <th style="font-size: 16px">Camera: Dolly in</th>
+        <th style="font-size: 16px">Camera: Trcuking left</th>
+      </tr>
+      <tr>
+        <th><video  width="320" src="01application/01_shot_design/Additional/example_6/cam_1_obj_1.mp4" autoplay loop controls muted/></th>
+        <th><video  width="320" src="01application/01_shot_design/Additional/example_6/cam_2_obj_1.mp4" autoplay loop controls muted/></th>
+        <th><video  width="320" src="01application/01_shot_design/Additional/example_6/cam_3_obj_1.mp4" autoplay loop controls muted/></th>
+      </tr>
+      <tr>
+        <th><video  width="320" src="01application/01_shot_design/Additional/example_6/cam_1_obj_2.mp4" autoplay loop controls muted/></th>
+        <th><video  width="320" src="01application/01_shot_design/Additional/example_6/cam_2_obj_2.mp4" autoplay loop controls muted/></th>
+        <th><video  width="320" src="01application/01_shot_design/Additional/example_6/cam_3_obj_2.mp4" autoplay loop controls muted/></th>
+      </tr>
+    </tbody>
+  </table>
+
+
+    <!------------------ BEGIN SECTION ------------------>
+    <p>&nbsp;</p>
+    <hr>
+    <p align="left">
+      Long Videos with Complex Trajectories.
+    </p>
+    <table  width="1024" align="center">
+      <tbody>
+            <tr>
+              <th style="font-size: 16px">Input image</th>
+              <th style="font-size: 16px">Motion control signal</th>
+              <th style="font-size: 16px">Result sample #1</th>
+              <th style="font-size: 16px">Result sample #2</th>
+            </tr>
+            <tr>
+              <th><img class="input_image_frameinterp" src="./01application/02_longvid/example7/image.webp" alt=""/></th>
+              <th><img class="input_image_frameinterp" src="./01application/02_longvid/example7/condition.png" alt=""/></th>
+              <th><video  width="320" src="./01application/02_longvid/example7/shot_1.mp4" autoplay loop controls muted/></th>
+              <th><video  width="320" src="./01application/02_longvid/example7/shot_2.mp4" autoplay loop controls muted/></th>
+            </tr>
+            <tr>
+              <th><img class="input_image_frameinterp" src="./01application/02_longvid/example10/image.webp" alt=""/></th>
+              <th><img class="input_image_frameinterp" src="./01application/02_longvid/example10/condition.png" alt=""/></th>
+              <th><video  width="320" src="./01application/02_longvid/example10/shot_1.mp4" autoplay loop controls muted/></th>
+              <th><video  width="320" src="./01application/02_longvid/example10/shot_2.mp4" autoplay loop controls muted/></th>
+            </tr>
+          <tr> <td><br /></td> </tr> 
+      </tbody>
+    </table>
+
+    <table  width="1024" align="center">
+      <tbody>
+            <tr>
+              <th style="font-size: 16px">Input image</th>
+              <th style="font-size: 16px">Result sample #1</th>
+              <th style="font-size: 16px">Result sample #2</th>
+            </tr>
+            <tr>
+              <th><img class="input_image_frameinterp" src="./01application/02_longvid/example_3/example3.jpg" alt=""/></th>
+              <th><video  width="320" src="./01application/02_longvid/example_3/shot_1.mp4" autoplay loop controls muted/></th>
+              <th><video  width="320" src="./01application/02_longvid/example_3/shot_2.mp4" autoplay loop controls muted/></th>
+            </tr>
+            <tr>
+              <th><img class="input_image_frameinterp" src="./01application/02_longvid/example_4/example4.jpg" alt=""/></th>
+              <th><video  width="320" src="./01application/02_longvid/example_4/shot_1.mp4" autoplay loop controls muted/></th>
+              <th><video  width="320" src="./01application/02_longvid/example_4/shot_2.mp4" autoplay loop controls muted/></th>
+            </tr>
+            <tr>
+              <th><img class="input_image_frameinterp" src="./01application/02_longvid/example_5/example5.jpg" alt=""/></th>
+              <th><video  width="320" src="./01application/02_longvid/example_5/shot_1_3shots.mp4" autoplay loop controls muted/></th>
+              <th><video  width="320" src="./01application/02_longvid/example_5/shot_2_3shots.mp4" autoplay loop controls muted/></th>
+            </tr>
+            <tr>
+              <th><img class="input_image_frameinterp" src="./01application/02_longvid/example_8/example8.jpg" alt=""/></th>
+              <th><video  width="320" src="./01application/02_longvid/example_8/shot_1.mp4" autoplay loop controls muted/></th>
+              <th><video  width="320" src="./01application/02_longvid/example_8/shot_2.mp4" autoplay loop controls muted/></th>
+            </tr>
+            <tr>
+              <th><img class="input_image_frameinterp" src="./01application/02_longvid/example_9/example9.jpg" alt=""/></th>
+              <th><video  width="320" src="./01application/02_longvid/example_9/shot_1.mp4" autoplay loop controls muted/></th>
+              <th><video  width="320" src="./01application/02_longvid/example_9/shot_2.mp4" autoplay loop controls muted/></th>
+            </tr>
+          <tr> <td><br /></td> </tr> 
+      </tbody>
+    </table>
+
+
+    
+    <!------------------ BEGIN SECTION ------------------>
+    <p>&nbsp;</p>
+    <hr>
+    <p align="left">
+      Object Local Motion Control.
+    </p>
+    
+    <table  width="1024" align="center">
+      <tbody>
+            <tr>
+              <td class="vertical-text">Inputs</td> 
+              <th><img class="input_image_local" src="./01application/03_local/case_boy/motion1.png" alt=""/></th>
+              <th><img class="input_image_local" src="./01application/03_local/case_boy/motion2.png" alt=""/></th>
+              <th><img class="input_image_local" src="./01application/03_local/case_boy/motion3.png" alt=""/></th>
+              <th><img class="input_image_local" src="./01application/03_local/case_boy/motion4.png" alt=""/></th>
+            </tr>
+            <tr>
+              <td class="vertical-text">Results</td> 
+              <th><video  class="output-video-local" src="./01application/03_local/case_boy/motion1.mp4" autoplay loop controls muted/></th>
+              <th><video  class="output-video-local" src="./01application/03_local/case_boy/motion2.mp4" autoplay loop controls muted/></th>
+              <th><video  class="output-video-local" src="./01application/03_local/case_boy/motion3.mp4" autoplay loop controls muted/></th>
+              <th><video  class="output-video-local" src="./01application/03_local/case_boy/motion4.mp4" autoplay loop controls muted/></th>
+            </tr>
+            <tr> <td><br /></td> </tr> 
+            <tr>
+              <td class="vertical-text">Inputs</td> 
+              <th><img class="input_image_local" src="./01application/03_local/case_train/motion1.png" alt=""/></th>
+              <th><img class="input_image_local" src="./01application/03_local/case_train/motion2.png" alt=""/></th>
+              <th><img class="input_image_local" src="./01application/03_local/case_train/motion3.png" alt=""/></th>
+              <th><img class="input_image_local" src="./01application/03_local/case_train/motion4.png" alt=""/></th>
+            </tr>
+            <tr>
+              <td class="vertical-text">Results</td> 
+              <th><video  class="output-video-local" src="./01application/03_local/case_train/motion1.mp4" autoplay loop controls muted/></th>
+              <th><video  class="output-video-local" src="./01application/03_local/case_train/motion2.mp4" autoplay loop controls muted/></th>
+              <th><video  class="output-video-local" src="./01application/03_local/case_train/motion3.mp4" autoplay loop controls muted/></th>
+              <th><video  class="output-video-local" src="./01application/03_local/case_train/motion4.mp4" autoplay loop controls muted/></th>
+            </tr>
+          <tr> <td><br /></td> </tr> 
+      </tbody>
+    </table>
+
+    <table  width="1024" align="center">
+      <tbody>
+            <tr>
+              <td class="vertical-text">Inputs</td> 
+              <th><img class="input_image_local" src="./01application/03_local/anime_obj1.png" alt=""/></th>
+              <th><img class="input_image_local" src="./01application/03_local/anime_obj1.png" alt=""/></th>
+              <th><img class="input_image_local" src="./01application/03_local/anime_obj2.png" alt=""/></th>
+              <th><img class="input_image_local" src="./01application/03_local/anime_obj2.png" alt=""/></th>
+            </tr>
+            <tr>
+              <td class="vertical-text">Results</td> 
+              <th><video  class="output-video-local" src="./01application/03_local/example_4/local_1.mp4" autoplay loop controls muted/></th>
+              <th><video  class="output-video-local" src="./01application/03_local/example_4/local_1_cam.mp4" autoplay loop controls muted/></th>
+              <th><video  class="output-video-local" src="./01application/03_local/example_4/local_2.mp4" autoplay loop controls muted/></th>
+              <th><video  class="output-video-local" src="./01application/03_local/example_4/local_2_cam.mp4" autoplay loop controls muted/></th>
+            </tr>
+            <tr> <td><br /></td> </tr> 
+            <tr>
+              <td class="vertical-text">Inputs</td> 
+              <th><img class="input_image_local" src="./01application/03_local/plant1.png" alt=""/></th>
+              <th><img class="input_image_local" src="./01application/03_local/plant2.png" alt=""/></th>
+              <th><img class="input_image_local" src="./01application/03_local/plant3.png" alt=""/></th>
+              <th><img class="input_image_local" src="./01application/03_local/plant4.png" alt=""/></th>
+            </tr>
+            <tr>
+              <td class="vertical-text">Results</td> 
+              <th><video  class="output-video-local" src="./01application/03_local/example_6/local_1.mp4" autoplay loop controls muted/></th>
+              <th><video  class="output-video-local" src="./01application/03_local/example_6/local_2.mp4" autoplay loop controls muted/></th>
+              <th><video  class="output-video-local" src="./01application/03_local/example_6/local_3.mp4" autoplay loop controls muted/></th>
+              <th><video  class="output-video-local" src="./01application/03_local/example_6/local_4.mp4" autoplay loop controls muted/></th>
+            </tr>
+          <tr> <td><br /></td> </tr> 
+      </tbody>
+    </table>
+
+
+    <!------------------ BEGIN SECTION ------------------>
+    <p>&nbsp;</p>
+    <hr>
+        
+    <h2 id="applications_container" align="left"><a name="image-results" id="image-results"></a>Additional Applications</h2>
+    <p align="left">
+        Motion Transfer.
+    </p>
+    <table  width="1024" align="center">
+      <tbody>
+        <tr>
+          <td class="vertical-text">Input source video</td> 
+          <th><video  class="output-video-motion-transfer" src="./02additional_application/motion_transfer/1737072438_tracking.mp4" autoplay loop controls muted/></th>
+          <th><video  class="output-video-motion-transfer" src="./02additional_application/motion_transfer/1737074346_tracking.mp4" autoplay loop controls muted/></th>
+          <th><video  class="output-video-motion-transfer" src="./02additional_application/motion_transfer/1737578292_tracking.mp4" autoplay loop controls muted/></th>
+        </tr>
+        <tr>
+          <td class="vertical-text">Transfer results</td> 
+          <th><video  class="output-video-motion-transfer" src="./02additional_application/motion_transfer/1737065876_output.mp4" autoplay loop controls muted/></th>
+          <th><video  class="output-video-motion-transfer" src="./02additional_application/motion_transfer/1737074410_output.mp4" autoplay loop controls muted/></th>
+          <th><video  class="output-video-motion-transfer" src="./02additional_application/motion_transfer/1737577588_output.mp4" autoplay loop controls muted/></th>
+        </tr>
+
+          <tr> <td><br /></td> </tr> 
+      </tbody>
+    </table>
+
+
+    <p align="left">
+        Video Editing.
+    </p>
+    <table  width="1024" align="center">
+      <tbody>
+        <tr>
+          <td class="vertical-text">Input video</td> 
+          <th><video  class="output-video-motion-transfer" src="./02additional_application/video_editing/1737076769.mp4" autoplay loop controls muted/></th>
+          <th><video  class="output-video-motion-transfer" src="./02additional_application/video_editing/1737079457.mp4" autoplay loop controls muted/></th>
+          <th><video  class="output-video-motion-transfer" src="./02additional_application/video_editing/1737657803.mp4" autoplay loop controls muted/></th>
+
+        </tr>
+        <tr>
+          <td class="vertical-text">Editing results</td>
+          <th><video  class="output-video-motion-transfer" src="./02additional_application/video_editing/1737076755_output.mp4" autoplay loop controls muted/></th>
+          <th><video  class="output-video-motion-transfer" src="./02additional_application/video_editing/1737081689_output_ship.mp4" autoplay loop controls muted/></th>
+          <th><video  class="output-video-motion-transfer" src="./02additional_application/video_editing/1737658132_output.mp4" autoplay loop controls muted/></th>
+
+        </tr>
+
+          <tr> <td><br /></td> </tr> 
+      </tbody>
+    </table>
+
+
+    
+    <!------------------ END   SECTION ------------------> 
+
+
+    <!------------------ BEGIN SECTION ------------------>
+    <p>&nbsp;</p>
+    <hr>
+        
+    <h2 id="sparse_container" align="left"><a name="image-results" id="image-results"></a>Comparisons with Baseline Methods</h2>
+    <p align="left">
+      Camera Motion Control.
+    </p>
+    <table  width="1024" id="custom-table" align="center">
+      <tbody>
+        <tr>
+          <th style="font-size: 16px">Input camera control</th>
+          <th style="font-size: 16px">MotionCtrl</th>
+          <th style="font-size: 16px">CameraCtrl</th>
+          <th style="font-size: 16px">Ours</th>
+        </tr>
+        <tr>
+          <!-- <th><img class="input_image_frameinterp" src="./03comparison/02_camera_motion/dollyzoom1_0001.png" alt=""/></th> -->
+           <th>
+            <div class="centered-symbol">
+              [ Dolly in + Zoom Out ]<br>
+              (Dolly zoom)
+            </div>
+           </th>
+          <th><video  width="320" src="./03comparison/02_camera_motion/MotionCtrl_dollyzoom_1.mp4" autoplay loop controls muted/></th>
+          <th><video  width="320" src="./03comparison/02_camera_motion/CameraCtrl_dollyzoom_1.mp4" autoplay loop controls muted/></th>
+          <th><video  width="320" src="./03comparison/02_camera_motion/Ours_dollyzoom_1.mp4" autoplay loop controls muted/></th>
+        </tr>
+        <tr>
+          <!-- <th><img class="input_image_frameinterp" src="./03comparison/02_camera_motion/running_0001.png" alt=""/></th> -->
+           <th>
+            <div class="centered-symbol">
+              [ Trucking right ]
+            </div>
+           </th>
+          <th><video  width="320" src="./03comparison/02_camera_motion/MotionCtrl_running.mp4" autoplay loop controls muted/></th>
+          <th><video  width="320" src="./03comparison/02_camera_motion/CameraCtrl_running.mp4" autoplay loop controls muted/></th>
+          <th><video  width="320" src="./03comparison/02_camera_motion/Ours_running.mp4" autoplay loop controls muted/></th>
+        </tr>
+          <tr> <td><br /></td> </tr> 
+      </tbody>
+    </table>
+
+
+    <p align="left">
+      Object Motion Control.
+    </p>
+    <table  width="1024" align="center">
+      <tbody>
+        <tr>
+          <th style="font-size: 16px">Inputs</th>
+          <th style="font-size: 16px">DragAnything</th>
+          <th style="font-size: 16px">MOFA-Video</th>
+
+        </tr>
+        <tr>
+          <th><img class="object-motion-image" src="./03comparison/03_object_motion/flip.png" alt=""/></th>
+          <th><video  class="object-motion-video" src="03comparison/03_object_motion/DragAnything_frontflip.mp4" autoplay loop controls muted/></th>
+          <th><video  class="object-motion-video" src="03comparison/03_object_motion/MOFAVideo_frontflip.mp4" autoplay loop controls muted/></th>
+        </tr>
+        <tr>
+          <th style="font-size: 16px">Camera</th>
+          <th style="font-size: 16px">TrackDiffusion</th>
+          <th style="font-size: 16px">Ours</th>
+        </tr>
+        <tr>
+          <th>
+            <div class="centered-symbol">
+             [ Static ]
+            </div>
+          </th>
+          <th><video  class="object-motion-video" src="03comparison/03_object_motion/TrackDiffusion_frontflip.mp4" autoplay loop controls muted/></th>
+          <th><video  class="object-motion-video" src="03comparison/03_object_motion/Ours_frontflip.mp4" autoplay loop controls muted/></th>
+        </tr>
+
+
+        <tr> <td><br /></td> </tr> 
+        <tr>
+          <th style="font-size: 16px">Inputs</th>
+          <th style="font-size: 16px">DragAnything</th>
+          <th style="font-size: 16px">MOFA-Video</th>
+        </tr>
+        <tr>
+          <th><img class="object-motion-image" src="./03comparison/03_object_motion/running.png" alt=""/></th>
+          <th><video class="object-motion-video" src="03comparison/03_object_motion/DragAnything_running_withcamera.mp4" autoplay loop controls muted/></th>
+          <th><video class="object-motion-video" src="03comparison/03_object_motion/MOFAVideo_running_withcamera.mp4" autoplay loop controls muted/></th>
+        </tr>
+        <tr>
+          <th style="font-size: 16px">Camera</th>
+          <th style="font-size: 16px">TrackDiffusion</th>
+          <th style="font-size: 16px">Ours</th>
+        </tr>
+        <tr>
+          <th>
+            <div class="centered-symbol">
+             [ Trucking right ]
+            </div>
+          </th>
+          <th><video class="object-motion-video" src="03comparison/03_object_motion/TrackDiffusion_running_withcamera.mp4" autoplay loop controls muted/></th>
+          <th><video class="object-motion-video" src="03comparison/03_object_motion/Ours_running_withcamera.mp4" autoplay loop controls muted/></th>
+        </tr>
+
+          <tr> <td><br /></td> </tr> 
+      </tbody>
+    </table>
+
+
+    <!------------------ BEGIN SECTION ------------------>
+    <p>&nbsp;</p>
+    <hr>
+        
+    <h2 id="ablation_study" align="left"><a name="image-results" id="image-results"></a>Ablation Study</h2>
+    <p align="left">
+      Camera Motion Representation.
+    </p>
+    <table  width="1024" id="custom-table" align="center">
+      <tbody>
+        <tr>
+          <th style="font-size: 16px">Input</th>
+          <th style="font-size: 16px">Gauss. Map</th>
+          <th style="font-size: 16px">Plucker</th>
+          <th style="font-size: 16px">Point Traj Coeff. (Ours)</th>
+        </tr>
+        <tr>
+          <!-- <th><img class="input_image_frameinterp" src="./04ablation/01_camera/case1.png" alt=""/></th> -->
+          <th>
+            <div class="centered-symbol">
+              [ Dolly out + Panning right ]
+             </div>
+          </th>
+          <th><video  width="300" src="./04ablation/01_camera/Case1_Ours_ablation01.mp4" autoplay loop controls muted/></th>
+          <th><video  width="300" src="./04ablation/01_camera/Case1_Ours_ablation02.mp4" autoplay loop controls muted/></th>
+          <th><video  width="300" src="./04ablation/01_camera/Case1_Ours.mp4" autoplay loop controls muted/></th>
+        </tr>
+        <tr>
+          <th style="font-size: 16px">Input</th>
+          <th style="font-size: 16px">Gauss. Map</th>
+          <th style="font-size: 16px">Plucker</th>
+          <th style="font-size: 16px">Point Traj Coeff. (Ours)</th>
+        </tr>
+        <tr>
+          <!-- <th><img class="input_image_frameinterp" src="./04ablation/01_camera/case2.png" alt=""/></th> -->
+          <th>
+            <div class="centered-symbol">
+              [ Roll clockwise + Zoom out ]
+             </div>
+          </th>
+          <th><video  width="300" src="./04ablation/01_camera/Case2_Ours_ablation01.mp4" autoplay loop controls muted/></th>
+          <th><video  width="300" src="./04ablation/01_camera/Case2_Ours_ablation02.mp4" autoplay loop controls muted/></th>
+          <th><video  width="300" src="./04ablation/01_camera/Case2_Ours.mp4" autoplay loop controls muted/></th>
+        </tr>
+
+          <tr> <td><br /></td> </tr> 
+      </tbody>
+    </table>
+
+    <p align="left">
+      Bounding Box Conditioning.
+    </p>
+    <table  width="1024" align="center">
+      <tbody>
+        <tr>
+          <th style="font-size: 16px">Input</th>
+          <th style="font-size: 16px">Ours<sub>coord</sub></th>
+          <th style="font-size: 16px">Ours</th>
+        </tr>
+        <tr>
+          <th><img class="bbox-ablation-image" src="./03comparison/03_object_motion/flip.png" alt=""/></th>
+          <th><video  class="bbox-ablation-video" src="04ablation/02_object/OursAblation03_frontflip.mp4" autoplay loop controls muted/></th>
+          <th><video  class="bbox-ablation-video" src="04ablation/02_object/Ours_frontflip.mp4" autoplay loop controls muted/></th>
+        </tr>
+        <tr>
+          <th style="font-size: 16px">Input</th>
+          <th style="font-size: 16px">Ours<sub>coord</sub></th>
+          <th style="font-size: 16px">Ours</th>
+        </tr>
+        <tr>
+          <th><img class="bbox-ablation-image" src="./03comparison/03_object_motion/running.png" alt=""/></th>
+          <th><video  class="bbox-ablation-video" src="04ablation/02_object/OursAblation03_running_withcamera.mp4" autoplay loop controls muted/></th>
+          <th><video  class="bbox-ablation-video" src="./03comparison/03_object_motion/Ours_running_withcamera.mp4" autoplay loop controls muted/></th>
+        </tr>
+
+          <tr> <td><br /></td> </tr> 
+      </tbody>
+    </table>
+
+
+    <!------------------ BEGIN SECTION ------------------>
+    <h2 id="additional_analysis" align="left"><a name="image-results" id="image-results"></a>Additional Analysis</h2>
+    <p align="left">
+      Effect of Point Track Density on Camera Motion Control
+    </p>
+    <table  width="1024" align="center">
+      <tbody>
+        <tr>
+          <th style="font-size: 16px"></th>
+          <th style="font-size: 16px">Density=0.1</th>
+          <th style="font-size: 16px">Density=0.4</th>
+          <th style="font-size: 16px">Density=0.7</th>
+          <th style="font-size: 16px">Density=1.0</th>
+        </tr>
+        <tr>
+          <td class="vertical-text">Input point track</td> 
+          <th><video  class="output-video-motion-transfer" src="./06_analysis/num_of_points/1737615945_warped_video_geo_0.1.mp4" autoplay loop controls muted/></th>
+          <th><video  class="output-video-motion-transfer" src="./06_analysis/num_of_points/1737615945_warped_video_geo_0.4.mp4" autoplay loop controls muted/></th>
+          <th><video  class="output-video-motion-transfer" src="./06_analysis/num_of_points/1737615945_warped_video_geo_0.7.mp4" autoplay loop controls muted/></th>
+          <th><video  class="output-video-motion-transfer" src="./06_analysis/num_of_points/1737615945_warped_video_geo_1.0.mp4" autoplay loop controls muted/></th>
+        </tr>
+        <tr>
+          <td class="vertical-text">Results</td> 
+          <th><video  class="output-video-motion-transfer" src="./06_analysis/num_of_points/1737615945_output_0.1.mp4" autoplay loop controls muted/></th>
+          <th><video  class="output-video-motion-transfer" src="./06_analysis/num_of_points/1737615945_output_0.4.mp4" autoplay loop controls muted/></th>
+          <th><video  class="output-video-motion-transfer" src="./06_analysis/num_of_points/1737615945_output_0.7.mp4" autoplay loop controls muted/></th>
+          <th><video  class="output-video-motion-transfer" src="./06_analysis/num_of_points/1737615945_output_1.0.mp4" autoplay loop controls muted/></th>
+        </tr>
+
+          <tr> <td><br /></td> </tr> 
+      </tbody>
+    </table>
+
+
+
+    <p align="left">
+      Effect of Text Prompt. <br>
+      - We show camera motion control of "dolly in" with different levels of text detail.
+    </p>
+    <table  width="1024" align="center">
+      <tbody>
+        <tr>
+          <th style="font-size: 16px">"A man."</th>
+          <th style="font-size: 16px">"A man crossing a stream."</th>
+          <th style="font-size: 16px">"A man with a red backpack steps over a stream in a mountain valley."</th>
+        </tr>
+        <tr>
+          <th><video  class="output-video-motion-transfer" src="./06_analysis/text_prompt/1737619417_output0.mp4" autoplay loop controls muted/></th>
+          <th><video  class="output-video-motion-transfer" src="./06_analysis/text_prompt/1737619417_output1.mp4" autoplay loop controls muted/></th>
+          <th><video  class="output-video-motion-transfer" src="./06_analysis/text_prompt/1737619417_output2.mp4" autoplay loop controls muted/></th>
+
+        </tr>
+        <tr>
+          <th style="font-size: 16px">"A man wearing a blue flannel shirt, hiking boots, and a red backpack carefully steps across a rocky stream in a picturesque valley surrounded by rugged mountains."</th>
+          <th style="font-size: 16px">"A man crossing a stream. It is raining."</th>
+          <th style="font-size: 16px">"A man crossing a stream and turning around."</th>
+        </tr>
+        <tr>
+          <th><video  class="output-video-motion-transfer" src="./06_analysis/text_prompt/1737619417_output3.mp4" autoplay loop controls muted/></th>
+          <th><video  class="output-video-motion-transfer" src="./06_analysis/text_prompt/1737619417_output_raining.mp4" autoplay loop controls muted/></th>
+          <th><video  class="output-video-motion-transfer" src="./06_analysis/text_prompt/1737619417_output_turning_around.mp4" autoplay loop controls muted/></th>
+        </tr>
+
+        
+          <tr> <td><br /></td> </tr> 
+      </tbody>
+    </table>
+
+
+
+    <p align="left">
+      Essentiality of Camera-aware and Camera-object-aware Transformations
+    </p>
+    <table width="1024" align="center">
+      <tbody>
+        <tr>
+          <th style="font-size: 16px">-</th>
+          <th style="font-size: 16px">Inputs</th>
+          <th style="font-size: 16px">Preview</th>
+          <th style="font-size: 16px">w/o transform</th>
+          <th style="font-size: 16px">w/ transform (Ours)</th>
+        </tr>
+        <tr>
+          <th rowspan="2" style="font-size: 16px">Camera-aware transformation</th>
+          <th><img class="input_image_local" src="./06_analysis/transform/1737650731.png" alt=""/></th>
+          <th><video  class="output-video-motion-transfer" src="./06_analysis/transform/1737650731_warped_video_geo_used.mp4" autoplay loop controls muted/></th>
+          <th><video  class="output-video-motion-transfer" src="./06_analysis/transform/1737650731_output_wowarp.mp4" autoplay loop controls muted/></th>
+          <th><video  class="output-video-motion-transfer" src="./06_analysis/transform/1737650731_output_used.mp4" autoplay loop controls muted/></th>
+        </tr>
+        <tr>
+          
+          <th><img class="input_image_local" src="./06_analysis/transform/1737652595.png" alt=""/></th>
+          <th><video  class="output-video-motion-transfer" src="./06_analysis/transform/1737652595_warped_video_geo_used.mp4" autoplay loop controls muted/></th>
+          <th><video  class="output-video-motion-transfer" src="./06_analysis/transform/1737652595_output_wowarp.mp4" autoplay loop controls muted/></th>
+          <th><video  class="output-video-motion-transfer" src="./06_analysis/transform/1737652595_output.mp4" autoplay loop controls muted/></th>
+        </tr>
+        <tr>
+          <th style="font-size: 16px">Camera-object-aware transformation </th>
+          <th><img class="input_image_local" src="./06_analysis/transform/1737653578.png" alt=""/></th>
+          <th><video  class="output-video-motion-transfer" src="./06_analysis/transform/1737653578_warped_video_geo.mp4" autoplay loop controls muted/></th>
+          <th><video  class="output-video-motion-transfer" src="./06_analysis/transform/1737653578_output_wowarp.mp4" autoplay loop controls muted/></th>
+          <th><video  class="output-video-motion-transfer" src="./06_analysis/transform/1737653578_output.mp4" autoplay loop controls muted/></th>
+        </tr>
+        
+          <tr> <td><br /></td> </tr> 
+      </tbody>
+    </table>
+
+
+    <!------------------ END   SECTION ------------------> 
+
+    <!------------------ BEGIN SECTION ------------------>
+    <p>&nbsp;</p>
+    <hr>
+        
+    <h2 id="legend" align="left"><a name="image-results" id="image-results"></a>Legend of Camera Motions</h2>
+    <div style="text-align: center;">
+      <img class="xx" style="width: 500px; " src="./static/camera_motion_icons.png" alt=""/>
+    </div>
+   
+
+    <!------------------ BEGIN SECTION ------------------>
+    <!-- <p>&nbsp;</p>
+    <hr>
+        
+    <h2 id="limitations_container" align="left"><a name="image-results" id="image-results"></a>Limitations</h2>
+
+    <p align="left">
+      xxx
+    </p>
+    <table  width="1024" align="center">
+      <tbody>
+
+
+          <tr> <td><br /></td> </tr> 
+      </tbody>
+    </table>
+
+
+    <p align="left">
+        xxx.
+    </p>
+    <table  width="1024" align="center">
+      <tbody>
+
+
+          <tr> <td><br /></td> </tr> 
+      </tbody>
+    </table> -->
+
+
+
+    <!------------------ END   SECTION ------------------> 
+
+
+</div>
+
+
+<script>
+  const videoContainer = document.querySelector('.video-container');
+  const video = document.querySelector('video');
+  const hoverImage = document.querySelector('.hover-image');
+  const caption = document.querySelector('.caption');
+
+  videoContainer.addEventListener('mouseenter', () => {
+      video.pause();
+      hoverImage.style.display = 'block';
+      caption.style.display = 'block';
+  });
+
+  videoContainer.addEventListener('mouseleave', () => {
+      video.play();
+      hoverImage.style.display = 'none';
+      caption.style.display = 'none';
+  });
+
+
+  // for nerfies template
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+
+  gtag('js', new Date());
+
+  gtag('config', 'G-PYVRSFMDRL');
+
+
+
+
+
+  // for carousel
+  window.addEventListener('DOMContentLoaded', (event) => {
+        const videoWrappers = document.querySelectorAll('.video-wrapper');
+      
+        videoWrappers.forEach(wrapper => {
+          const defaultVideo = wrapper.querySelector('.default-video');
+          const aspectRatio = defaultVideo.videoWidth / defaultVideo.videoHeight;
+          const height = wrapper.offsetWidth / aspectRatio;
+      
+          wrapper.style.height = `${height}px`;
+      
+          wrapper.addEventListener('mouseenter', () => {
+            defaultVideo.pause();
+            hoverVideo.play();
+          });
+      
+          wrapper.addEventListener('mouseleave', () => {
+            defaultVideo.play();
+            hoverVideo.pause();
+          });
+        });
+      }); 
+      $(document).ready(function() {
+        var carouselItems = $('.carousel .item');
+        var numItems = carouselItems.length;
+        var numVideos = 5;
+        var currentIndex = 0;
+    
+        $('.carousel').on('click', function() {
+          currentIndex++;
+          if (currentIndex + numVideos <= numItems) {
+            carouselItems.removeClass('active');
+            carouselItems.slice(currentIndex, currentIndex + numVideos).addClass('active');
+          } else {
+            currentIndex = 0;
+            carouselItems.removeClass('active');
+            carouselItems.slice(currentIndex, currentIndex + numVideos).addClass('active');
+          }
+        });
+    
+        carouselItems.slice(currentIndex, currentIndex + numVideos).addClass('active');
+      });
+</script>
+
+
+<footer class="footer">
+  <div class="container" style="text-align: left;">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            Website content is licensed under a <a rel="license"
+                                                href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative
+            Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            Website source code based on the <a href="https://nerfies.github.io/"> Nerfies</a> project page and <a href="https://doubiiu.github.io/projects/ToonCrafter/"> ToonCrafter</a>. If you want to reuse their <a
+              href="https://github.com/nerfies/nerfies.github.io">source code</a>, please credit them appropriately.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+</body>
+</html>
